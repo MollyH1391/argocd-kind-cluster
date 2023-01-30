@@ -38,6 +38,9 @@ Forwarding from 127.0.0.1:8080 -> 8080
 Forwarding from [::1]:8080 -> 8080
 ```
 
+![argocd-login-GUI](https://github.com/MollyH1391/argocd-kind-cluster/blob/953647e1b345bf80838d66566dacf17caaea4840/argocd-local/GUI/argo_login.png)
+
+
 ## argocd cli
 ```bash
 brew install argocd 
