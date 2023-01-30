@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: guestbook
+  namespace: argocd
+spec: 
+  destination: 
+    namespace: guestbook #deploy to this namespace
+    server: "https://kubernetes.default.svc" #deplor to this cluster
+  project: default
+  source: 
+    path: guestbook
+    repoURL: "https://github.com/MollyH1391/argocd-kind-cluster.git"
+    targetRevision: master
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
