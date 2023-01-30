@@ -6,12 +6,12 @@ metadata:
 spec: 
   destination: 
     namespace: guestbook #deploy to this namespace
-    server: "https://kubernetes.default.svc" #deplor to this cluster
+    server: "https://kubernetes.default.svc" #deploy to this cluster
   project: default
   source: 
-    path: guestbook
+    path: argocd-local/argocd-demo-app/guestbook
     repoURL: "https://github.com/MollyH1391/argocd-kind-cluster.git"
-    targetRevision: master
+    targetRevision: main
   syncPolicy:
     syncOptions:
-      - CreateNamespace=true
+      - CreateNamespace=true # create the namespace if it is not exist
