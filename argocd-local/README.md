@@ -59,3 +59,23 @@ peiyihuang@PeideMacBook-Air ~ % argocd cluster list
 SERVER                          NAME        VERSION  STATUS   MESSAGE                                                  PROJECT
 https://kubernetes.default.svc  in-cluster           Unknown  Cluster has no applications and is not being monitored.  
 ```
+
+### deploy a demo app
+prepare the app deployment.yaml and service.yaml in "guestbook" file.
+prepare the application.yaml for argocd.
+
+```bash
+kubectl apply -f application.yaml
+
+application.argoproj.io/guestbook created
+```
+
+#### check the deployed app
+```bash
+kubectl get applications.argoproj.io
+
+NAME        SYNC STATUS   HEALTH STATUS
+guestbook   OutOfSync     Missing
+```
+
+## check the status in argocd
