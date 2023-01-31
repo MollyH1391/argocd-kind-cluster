@@ -90,3 +90,16 @@ kubectl get applications.argoproj.io
 NAME        SYNC STATUS   HEALTH STATUS
 guestbook   Synced        Healthy
 ```
+
+## argocd automated sync
+
+### add syncPolicy: automated
+path: argocd-kind-cluster/argocd-local/auto-sync-argocd-demo-app/
+
+configure syncPolicy under spec in application.yaml
+```yaml
+  syncPolicy:
+    automated: {}
+```
+
+![auto-sync-demo](https://github.com/MollyH1391/argocd-kind-cluster/blob/7000c2aa513fb80c30e94005882526f17f6ade2f/argocd-local/GUI/autosync0131.gif)
