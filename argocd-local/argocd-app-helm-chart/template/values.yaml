@@ -1,0 +1,6 @@
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/MollyH1391/argocd-kind-cluster.git
+    targetRevision: HEAD
