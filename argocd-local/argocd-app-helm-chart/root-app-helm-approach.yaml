@@ -19,7 +19,7 @@ spec:
     kind: Application
   project: default
   source:
-    path: apps-helm-chart/apps
+    path: argocd-local/argocd-app-helm-chart/app-helm-chart/apps
     repoURL: https://github.com/MollyH1391/argocd-kind-cluster.git
     targetRevision: main
   syncPolicy:
