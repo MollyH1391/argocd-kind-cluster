@@ -175,3 +175,6 @@ kustomize-app            Synced        Healthy
 root-app-helm-approach   Synced        Healthy
 ```
 
+![root-app](https://github.com/MollyH1391/argocd-kind-cluster/blob/11e4001615ae094bcf3ef7be6f4381e4e4a73f07/argocd-local/GUI/argocd_root-app.png)
+
+![kustomize-app](https://github.com/MollyH1391/argocd-kind-cluster/blob/11e4001615ae094bcf3ef7be6f4381e4e4a73f07/argocd-local/GUI/%20kustomize-app.png)
