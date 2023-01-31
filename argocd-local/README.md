@@ -82,3 +82,11 @@ guestbook   OutOfSync     Missing
 ![demoapp-argocd](https://github.com/MollyH1391/argocd-kind-cluster/blob/8e92f78bae01f1c975098def26151d42780a8aff/argocd-local/GUI/argocd_0131.png)
 
 ![argocd-sync-status](https://github.com/MollyH1391/argocd-kind-cluster/blob/8e92f78bae01f1c975098def26151d42780a8aff/argocd-local/GUI/argocd_01311.png)
+
+#### check the deployed app again
+```bash
+kubectl get applications.argoproj.io
+
+NAME        SYNC STATUS   HEALTH STATUS
+guestbook   Synced        Healthy
+```
