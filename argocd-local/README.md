@@ -103,3 +103,75 @@ configure syncPolicy under spec in application.yaml
 ```
 
 ![auto-sync-demo](https://github.com/MollyH1391/argocd-kind-cluster/blob/7000c2aa513fb80c30e94005882526f17f6ade2f/argocd-local/GUI/autosync0131.gif)
+
+## deploy to argocd with helm chart and kustomize
+
+### configure an Application to link all apps that are ready to deploy
+path: argocd-kind-cluster/argocd-local/argocd-app-helm-chart/root-app-helm-approach.yaml
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: null
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  labels:
+    app.kubernetes.io/name: root-app-helm-approach
+  name: root-app-helm-approach
+  namespace: argocd
+spec:
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  ignoreDifferences:
+  - group: argoproj.io
+    jsonPointers:
+    - /status
+    kind: Application
+  project: default
+  source:
+    path: argocd-local/argocd-app-helm-chart/app-helm-chart/apps
+    repoURL: https://github.com/MollyH1391/argocd-kind-cluster.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      selfHeal: true
+    syncOptions:
+    - allowEmpty=true
+    - CreateNamespace=true
+```
+
+### configure kustomize manidests
+path: argocd-local/kustomize-app
+```bash
+kustomize-app
+    ├── deployment.yaml
+    ├── kustomization.yaml
+    └── service.yaml
+```
+
+### configure app helm chart
+path: argocd-local/argocd-app-helm-chart/app-helm-chart/apps
+```bash
+tree
+.
+├── Chart.yaml
+├── templates
+│   └── kustomize-app.yaml
+└── values.yaml
+```
+
+### deply to the kind cluster
+```bash
+kubectl apply -f root-app-helm-approach.yaml
+
+application.argoproj.io/root-app-helm-approach created
+
+kubectl get applications.argoproj.io
+
+NAME                     SYNC STATUS   HEALTH STATUS
+kustomize-app            Synced        Healthy
+root-app-helm-approach   Synced        Healthy
+```
+
