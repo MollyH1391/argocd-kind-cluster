@@ -11,7 +11,7 @@ spec:
   source: 
     path: argocd-local/auto-sync-argocd-demo-app/deployment
     repoURL: "https://github.com/MollyH1391/argocd-kind-cluster.git"
-    targetRevision: master
+    targetRevision: main
     directory:
       recurse: true
   syncPolicy:
